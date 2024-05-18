@@ -64,8 +64,8 @@ jobs:
           
       - name: Build AAR
         run: |
-          cd "$GITHUB_WORKSPACE"/libraries/decoder_ffmpeg && \
-          ./gradlew assembleRelease
+          cd "$GITHUB_WORKSPACE"/media/ && \
+          ./gradlew :lib-decoder-ffmpeg:assemblerelease
         
       - name: Upload Media3 Exoplayer FFmpeg
         uses: actions/upload-artifact@v4
