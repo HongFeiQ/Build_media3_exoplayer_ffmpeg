@@ -44,7 +44,7 @@ jobs:
       - name: Build Media3 Exoplayer FFmpeg
         run: |
           cd "$GITHUB_WORKSPACE"
-          git clone https://github.com/androidx/media -b release
+          git clone https://github.com/HongFeiQ/media -b release
           cd media
           FFMPEG_MODULE_PATH="$(pwd)/libraries/decoder_ffmpeg/src/main"
           NDK_PATH="$GITHUB_WORKSPACE"/android-ndk-${{ github.event.inputs.ANDROID_NDK }}
@@ -66,10 +66,16 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"/media/ && \
           ./gradlew :lib-decoder-ffmpeg:assemblerelease
-        
+          ./gradlew :lib-container:assemblerelease
+          ./gradlew :lib-datasource-okhttp:assemblerelease
+          ./gradlew :lib-datasource:assemblerelease
+          ./gradlew :lib-datasource-rtmp:assemblerelease
+          ./gradlew :lib-extractor:assemblerelease
+          tar -czvf exo.tar.gz media/libraries/decoder_ffmpeg/buildout/outputs/aar/* media/libraries/datasource/buildout/outputs/aar/* media/libraries/datasource-okhttp/buildout/outputs/aar/* media/libraries/datasource-rtmp/buildout/outputs/aar/* media/libraries/extractor/buildout/outputs/aar/* media/libraries/container/buildout/outputs/aar/* 
+
 
       - name: Upload Media3 Exoplayer FFmpeg aar
         uses: actions/upload-artifact@v4
         with:
-          name: Media3 Exoplayer FFmpeg aar
-          path: media/libraries/decoder_ffmpeg/buildout/outputs/aar/*
+          name: Media3 Exoplayer aars
+          path: exo.tar.gz
