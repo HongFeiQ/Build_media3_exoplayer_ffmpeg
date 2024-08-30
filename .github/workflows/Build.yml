@@ -79,5 +79,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Media3 Exoplayer aars
-          path: |
-	    exo.tar.gz
+          path: exo.tar.gz
