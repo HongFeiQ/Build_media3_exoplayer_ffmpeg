@@ -1,4 +1,4 @@
-name: Build Media3 AARs
+name: Build Media3 Exoplayer FFmpeg
 
 on:
   workflow_dispatch:
@@ -64,9 +64,27 @@ jobs:
           ./build_ffmpeg.sh \
           "${FFMPEG_MODULE_PATH}" "${NDK_PATH}" "${HOST_PLATFORM}" "${ANDROID_ABI}" "${ENABLED_DECODERS[@]}"
           
-      - name: Upload Media3 Exoplayer AARs
+      - name: Build Media3 aars
+        run: |
+          cd "$GITHUB_WORKSPACE"/media/ && \
+          ./gradlew :lib-decoder-ffmpeg:assemblerelease
+          ./gradlew :lib-exoplayer:assemblerelease
+          ./gradlew :lib-container:assemblerelease
+          ./gradlew :lib-datasource:assemblerelease
+          ./gradlew :lib-datasource-okhttp:assemblerelease
+          ./gradlew :lib-datasource-rtmp:assemblerelease
+          ./gradlew :lib-extractor:assemblerelease
+
+      - name: Upload Media3 AARs
         uses: actions/upload-artifact@v4
         with:
-          name: Media3 Exoplayer aars
+          name: Media3 aars
           path: | 
-              media/libraries/decoder_ffmpeg/ffmpeg/android-libs/*
+            media/libraries/decoder_ffmpeg/buildout/outputs/aar/*
+            media/libraries/exoplayer/buildout/outputs/aar/*
+            media/libraries/container/buildout/outputs/aar/* 
+            media/libraries/datasource/buildout/outputs/aar/*
+            media/libraries/datasource_okhttp/buildout/outputs/aar/*
+            media/libraries/datasource_rtmp/buildout/outputs/aar/*
+            media/libraries/extractor/buildout/outputs/aar/*
+            
