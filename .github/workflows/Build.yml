@@ -69,4 +69,4 @@ jobs:
         with:
           name: Media3 Exoplayer aars
           path: | 
-              media/libraries/decoder_ffmpeg/buildout/outputs/aar/*
+              media/libraries/decoder_ffmpeg/ffmpeg/android-libs/*
