@@ -65,12 +65,6 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE"/media/ && \
           ./gradlew :lib-decoder-ffmpeg:assemblerelease
-          ./gradlew :lib-exoplayer:assemblerelease
-          ./gradlew :lib-container:assemblerelease
-          ./gradlew :lib-datasource:assemblerelease
-          ./gradlew :lib-datasource-okhttp:assemblerelease
-          ./gradlew :lib-datasource-rtmp:assemblerelease
-          ./gradlew :lib-extractor:assemblerelease
 
       - name: Upload Media3 AARs
         uses: actions/upload-artifact@v4
@@ -78,10 +72,4 @@ jobs:
           name: Media3 aars
           path: | 
             media/libraries/decoder_ffmpeg/buildout/outputs/aar/*
-            media/libraries/exoplayer/buildout/outputs/aar/*
-            media/libraries/container/buildout/outputs/aar/* 
-            media/libraries/datasource/buildout/outputs/aar/*
-            media/libraries/datasource_okhttp/buildout/outputs/aar/*
-            media/libraries/datasource_rtmp/buildout/outputs/aar/*
-            media/libraries/extractor/buildout/outputs/aar/*
             
