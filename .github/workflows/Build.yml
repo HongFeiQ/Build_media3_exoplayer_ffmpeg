@@ -10,7 +10,7 @@ on:
       ANDROID_ABI:
         description: "ANDROID_ABI"
         required: true
-        default: '35'
+        default: '21'
       ENABLED_DECODERS:
         description: "ENABLED_DECODERS"
         required: true
