@@ -18,7 +18,7 @@ on:
       FFMPEG_RELEASE_BRANCH:
         description: "FFMPEG_RELEASE_BRANCH"
         required: true
-        default: '7.0'
+        default: '7.1'
       MEDIA3_BRANCH:
         description: "MEDIA3_BRANCH"
         required: true
