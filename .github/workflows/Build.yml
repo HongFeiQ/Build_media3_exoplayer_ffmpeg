@@ -14,7 +14,7 @@ on:
       ENABLED_DECODERS:
         description: "ENABLED_DECODERS"
         required: true
-        default: 'vorbis opus flac alac pcm_mulaw pcm_alaw mp3 amrnb amrwb aac ac3 eac3 dca mlp truehd libarcdav3a'
+        default: 'vorbis opus flac alac pcm_mulaw pcm_alaw mp3 amrnb amrwb aac ac3 eac3 dca mlp truehd'
       FFMPEG_RELEASE_BRANCH:
         description: "FFMPEG_RELEASE_BRANCH"
         required: true
@@ -22,7 +22,7 @@ on:
       MEDIA3_BRANCH:
         description: "MEDIA3_BRANCH"
         required: true
-        default: 'release-1.5.0-beta01'
+        default: 'rc01'
 jobs:
   Build-Media3-Exoplayer-FFmpeg:
     runs-on: ubuntu-latest
